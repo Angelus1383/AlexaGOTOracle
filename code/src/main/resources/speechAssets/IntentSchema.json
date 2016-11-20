@@ -1,0 +1,77 @@
+{
+	"intents":[
+		{
+			"intent": "CharacterInformationIntent",
+			"slots":[
+				{
+					"name": "character",
+					"type": "LIST_OF_CHARACTERS" 
+				}
+			]
+		},
+		{
+			"intent": "HouseInformationIntent",
+			"slots":[
+				{
+					"name": "house",
+					"type": "LIST_OF_HOUSES" 
+				}
+			]
+		},
+		{
+			"intent": "CharacterQuoteIntent",
+			"slots":[
+				{
+					"name": "character",
+					"type": "LIST_OF_CHARACTERS" 
+				}
+			]
+		},
+		{
+			"intent": "CharacterPlaceIntent",
+			"slots":[
+				{
+					"name": "character",
+					"type": "LIST_OF_CHARACTERS" 
+				}
+			]
+		},
+		{
+			"intent": "FindEpisodeIntent",
+			"slots":[
+				{
+					"name": "episode",
+					"type": "AMAZON.NUMBER" 
+				},
+				{
+					"name": "season",
+					"type": "AMAZON.NUMBER" 
+				}
+			]
+		},
+		{
+			"intent": "FindLastEpisodeIntent"
+		},
+		{
+			"intent": "FindNextEpisodeIntent"
+		},
+	    {
+	      	"intent": "SupportedCharactersIntent"
+	    },
+	    {
+	      	"intent": "SupportedHousesIntent"
+	    },
+	    {
+	      	"intent": "SupportedPlacesIntent"
+	    },
+	    {
+	      	"intent": "AMAZON.HelpIntent"
+	    },
+	    {
+	      	"intent": "AMAZON.StopIntent"
+	    },
+	    {
+	      	"intent": "AMAZON.CancelIntent"
+	    }
+	]
+}

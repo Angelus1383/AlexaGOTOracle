@@ -1,0 +1,132 @@
+CharacterInformationIntent get information about {character}
+CharacterInformationIntent get information on {character}
+CharacterInformationIntent get info about {character}
+CharacterInformationIntent get info on {character}
+CharacterInformationIntent give me a recap about {character}
+CharacterInformationIntent give me a recap on {character}
+CharacterInformationIntent who is {character}
+CharacterInformationIntent {character}
+
+CharacterQuoteIntent get a quote of {character}
+CharacterQuoteIntent give a quote of {character}
+CharacterQuoteIntent tell a quote of {character}
+CharacterQuoteIntent get me a quote of {character}
+CharacterQuoteIntent give me a quote of {character}
+CharacterQuoteIntent tell me a quote of {character}
+CharacterQuoteIntent what says today {character}
+CharacterQuoteIntent what says {character}
+CharacterQuoteIntent what does {character} say today
+
+CharacterPlaceIntent where is {character}
+CharacterPlaceIntent where is {character} now
+CharacterPlaceIntent where is {character} today
+CharacterPlaceIntent where is now {character}
+CharacterPlaceIntent which is the last known location of {character}
+CharacterPlaceIntent which is the last location of {character}
+CharacterPlaceIntent which is the last known position of {character}
+CharacterPlaceIntent which is the last position of {character}
+
+HouseInformationIntent get information about {house}
+HouseInformationIntent get information on {house}
+HouseInformationIntent get info about {house}
+HouseInformationIntent get info on {house}
+HouseInformationIntent get a recap about {house}
+HouseInformationIntent get a recap on {house}
+HouseInformationIntent give me information about {house}
+HouseInformationIntent give me information on {house}
+HouseInformationIntent give me info about {house}
+HouseInformationIntent give me info on {house}
+HouseInformationIntent give me a recap about {house}
+HouseInformationIntent give me a recap on {house}
+HouseInformationIntent tell me information about {house}
+HouseInformationIntent tell me information on {house}
+HouseInformationIntent tell me info about {house}
+HouseInformationIntent tell me info on {house}
+HouseInformationIntent tell me a recap about {house}
+HouseInformationIntent tell me a recap on {house}
+HouseInformationIntent {house}
+
+FindEpisodeIntent get information on the episode {episode} in the season {season}
+FindEpisodeIntent get information on episode {episode} in season {season}
+FindEpisodeIntent get information on episode {episode} of season {season}
+FindEpisodeIntent get information on season {season} episode {episode}
+FindEpisodeIntent get information on episode {episode} season {season}
+FindEpisodeIntent give me information on the episode {episode} in the season {season}
+FindEpisodeIntent give me information on episode {episode} in season {season}
+FindEpisodeIntent give me information on episode {episode} of season {season}
+FindEpisodeIntent give me information on season {season} episode {episode}
+FindEpisodeIntent give me information on episode {episode} season {season}
+FindEpisodeIntent tell me information on the episode {episode} in the season {season}
+FindEpisodeIntent tell me information on episode {episode} in season {season}
+FindEpisodeIntent tell me information on episode {episode} of season {season}
+FindEpisodeIntent tell me information on season {season} episode {episode}
+FindEpisodeIntent tell me information on episode {episode} season {season}
+FindEpisodeIntent what's happened in the episode {episode} in the season {season}
+FindEpisodeIntent what's happened on episode {episode} of season {season}
+FindEpisodeIntent what is happened in the episode {episode} in the season {season}
+FindEpisodeIntent what is happened on episode {episode} of season {season}
+
+FindLastEpisodeIntent get information on the last episode
+FindLastEpisodeIntent get last episode
+FindLastEpisodeIntent get the plot of last episode
+FindLastEpisodeIntent give me information on the last episode
+FindLastEpisodeIntent give me last episode
+FindLastEpisodeIntent give me the plot of last episode
+FindLastEpisodeIntent tell me information on the last episode
+FindLastEpisodeIntent tell me last episode
+FindLastEpisodeIntent tell me the plot of last episode
+FindLastEpisodeIntent what's happened in the last episode
+FindLastEpisodeIntent what is happened in the last episode
+
+FindNextEpisodeIntent get information on the next episode
+FindNextEpisodeIntent get the next episode
+FindNextEpisodeIntent give me information on the next episode
+FindNextEpisodeIntent give me the next episode
+FindNextEpisodeIntent tell me information on the next episode
+FindNextEpisodeIntent when will the next episode be released
+
+SupportedCharactersIntent what characters
+SupportedCharactersIntent what characters are supported
+SupportedCharactersIntent what characters are available
+SupportedCharactersIntent what characters do you know
+SupportedCharactersIntent which characters
+SupportedCharactersIntent which characters are supported
+SupportedCharactersIntent which characters are available
+SupportedCharactersIntent which characters do you know
+SupportedCharactersIntent about which characters can i ask
+SupportedCharactersIntent about which characters can i ask you
+SupportedCharactersIntent list of supported characters
+SupportedCharactersIntent supported characters list
+SupportedCharactersIntent get the supported characters list
+SupportedCharactersIntent give me the supported characters list
+SupportedCharactersIntent tell me the supported characters list
+SupportedCharactersIntent get the list of supported characters
+SupportedCharactersIntent give me the list of supported characters
+SupportedCharactersIntent tell me the list of supported characters
+SupportedCharactersIntent list of characters
+SupportedCharactersIntent get the list of characters
+SupportedCharactersIntent give me the list of characters
+SupportedCharactersIntent tell me the list of characters
+
+SupportedHousesIntent what houses
+SupportedHousesIntent what houses are available
+SupportedHousesIntent what houses are supported
+SupportedHousesIntent what houses do you know
+SupportedHousesIntent which houses
+SupportedHousesIntent which houses are available
+SupportedHousesIntent which houses are supported
+SupportedHousesIntent which houses do you know
+SupportedHousesIntent about which houses can i ask
+SupportedHousesIntent about which houses can i ask you
+SupportedHousesIntent list of supported houses
+SupportedHousesIntent get the list of supported houses
+SupportedHousesIntent give me the list of supported houses
+SupportedHousesIntent tell me the list of supported houses
+SupportedHousesIntent supported houses list
+SupportedHousesIntent get the supported houses list
+SupportedHousesIntent give me the supported houses list
+SupportedHousesIntent tell me the supported houses list
+SupportedCharactersIntent list of houses
+SupportedCharactersIntent get the list of houses
+SupportedCharactersIntent give me the list of houses
+SupportedCharactersIntent tell me the list of houses
