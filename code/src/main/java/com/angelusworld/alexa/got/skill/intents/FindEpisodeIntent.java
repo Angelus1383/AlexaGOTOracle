@@ -48,9 +48,9 @@ public class FindEpisodeIntent extends AbstractGOTIntent {
 	public SpeechletResponse handleIntent(Intent intent, Session session) {
 		SpeechletResponse response;
 		try {
-			LOGGER.info("FindEpisodeIntent invoked.");
 			Slot episode = intent.getSlot(EPISODE);
 			Slot season = intent.getSlot(SEASON);
+			LOGGER.info("FindEpisodeIntent invoked with episode:{} and season:{}",episode.getValue(),season.getValue());
 			JSONObject json = performRemoteGetCall(SERVICE_URL+"season="+season.getValue()+"&number="+episode.getValue(),null,null);
 			if(json != null && json.has("id")){
 				response = produceResponse(json);

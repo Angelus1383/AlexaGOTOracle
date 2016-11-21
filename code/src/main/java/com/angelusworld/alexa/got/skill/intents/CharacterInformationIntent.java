@@ -15,6 +15,7 @@
  */
 package com.angelusworld.alexa.got.skill.intents;
 
+import org.apache.commons.lang3.StringUtils;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -48,15 +49,19 @@ public class CharacterInformationIntent extends AbstractGOTIntent {
 	public SpeechletResponse handleIntent(Intent intent, Session session){
 		SpeechletResponse response;
 		try {
-			LOGGER.info("CharacterInformationIntent invoked.");
 			Slot character = intent.getSlot(CHARACTER);
-			JSONObject json = performRemoteGetCall(SERVICE_URL,URI_PATH+character.getValue(),null);
-			if(json != null && json.has("message") 
-			   && json.getString("message").equalsIgnoreCase("success") && json.has("data")){
-				response = produceResponse(json.getJSONObject("data"));
+			LOGGER.info("CharacterInformationIntent invoked passing character:{} ",character.getValue());
+			if(character == null || StringUtils.isEmpty(character.getValue())){
+				response = newAskResponse("Are you interested to know more information on which character?", "On which character would you like have information?");
 			}else{
-				LOGGER.error("A json object null or without message element is returned.");
-				response = newTellResponse(COMMUNICATION_ERROR_MESSAGE);
+				JSONObject json = performRemoteGetCall(SERVICE_URL,URI_PATH+character.getValue(),null);
+				if(json != null && json.has("message") 
+				   && json.getString("message").equalsIgnoreCase("success") && json.has("data")){
+					response = produceResponse(json.getJSONObject("data"));
+				}else{
+					LOGGER.error("A json object null or without message element is returned.");
+					response = newTellResponse(COMMUNICATION_ERROR_MESSAGE);
+				}
 			}
 		} catch (Exception e) {
 			LOGGER.error("Unable to perform intent request.", e);

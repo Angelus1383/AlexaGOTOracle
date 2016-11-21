@@ -18,6 +18,7 @@ package com.angelusworld.alexa.got.skill.intents;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.apache.commons.lang3.StringUtils;
 import org.json.JSONObject;
 
 import com.amazon.speech.slu.Intent;
@@ -77,18 +78,22 @@ public class CharacterQuoteIntent extends AbstractGOTIntent{
 	public SpeechletResponse handleIntent(Intent intent, Session session) {
 		SpeechletResponse response;
 		try {
-			LOGGER.info("CharacterQuoteIntent invoked.");
 			Slot character = intent.getSlot(CHARACTER);
-			String characterName = character.getValue();
-			if(translator.containsKey(characterName)){
-				characterName = translator.get(character.getValue());
-			}
-			JSONObject json = performRemoteGetCall(SERVICE_URL, PATH_URL, QUERY+characterName);
-			if(json != null && json.has(QUOTE)){
-				response = newTellResponse(json.getString(QUOTE));
+			if(character == null || StringUtils.isEmpty(character.getValue())){
+				response = newAskResponse("would you like a quote from which character?", "are you interested in a quote of which character?");
 			}else{
-				LOGGER.error("A json object null or without quote element is returned.");
-				response = newTellResponse("Hodor!");
+				String characterName = character.getValue();
+				if(translator.containsKey(characterName)){
+					characterName = translator.get(character.getValue());
+				}
+				LOGGER.info("CharacterQuoteIntent invoked passing character:{} ",character.getValue());
+				JSONObject json = performRemoteGetCall(SERVICE_URL, PATH_URL, QUERY+characterName);
+				if(json != null && json.has(QUOTE)){
+					response = newTellResponse(json.getString(QUOTE));
+				}else{
+					LOGGER.error("A json object null or without quote element is returned.");
+					response = newTellResponse("Hodor!");
+				}
 			}
 		} catch (Exception e) {
 			LOGGER.error("Unable to perform intent request.", e);

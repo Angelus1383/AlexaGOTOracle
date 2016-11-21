@@ -15,6 +15,7 @@
  */
 package com.angelusworld.alexa.got.skill.intents;
 
+import org.apache.commons.lang3.StringUtils;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -47,15 +48,19 @@ public class CharacterPlaceIntent extends AbstractGOTIntent{
 	public SpeechletResponse handleIntent(Intent intent, Session session) {
 		SpeechletResponse response;
 		try {
-			LOGGER.info("CharacterPlaceIntent invoked.");
 			Slot character = intent.getSlot(CHARACTER);
-			JSONObject json = performRemoteGetCall(SERVICE_URL,URI_PATH+character.getValue(), null);
-			if(json != null && json.has("message") 
-			   && json.getString("message").equalsIgnoreCase("success") && json.has("data") && json.getJSONArray("data").length()>0){
-				response = produceResponse(json.getJSONArray("data").getJSONObject(0));
+			LOGGER.info("CharacterPlaceIntent invoked passing character:{} ",character.getValue());
+			if(character == null || StringUtils.isEmpty(character.getValue())){
+				response = newAskResponse("Are you interested to know the position of which character?", "do you want to know the position of which character?");
 			}else{
-				LOGGER.error("A json object null or without message element is returned.");
-				response = newTellResponse(COMMUNICATION_ERROR_MESSAGE);
+				JSONObject json = performRemoteGetCall(SERVICE_URL,URI_PATH+character.getValue(), null);
+				if(json != null && json.has("message") 
+				   && json.getString("message").equalsIgnoreCase("success") && json.has("data") && json.getJSONArray("data").length()>0){
+					response = produceResponse(json.getJSONArray("data").getJSONObject(0));
+				}else{
+					LOGGER.error("A json object null or without message element is returned.");
+					response = newTellResponse(COMMUNICATION_ERROR_MESSAGE);
+				}
 			}
 		} catch (Exception e) {
 			LOGGER.error("Unable to perform intent request.", e);

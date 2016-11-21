@@ -16,6 +16,7 @@
 package com.angelusworld.alexa.got.skill.intents;
 
 import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.lang3.text.WordUtils;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -48,19 +49,28 @@ public class HouseInformationIntent extends AbstractGOTIntent {
 	public SpeechletResponse handleIntent(Intent intent, Session session) {
 		SpeechletResponse response;
 		try {
-			LOGGER.info("HouseInformationIntent invoked.");
 			Slot house = intent.getSlot(HOUSE);
-			String houseValue = house.getValue();
-			if(!houseValue.toLowerCase().startsWith("house")){
-				houseValue += "House ";
-			}
-			JSONObject json = performRemoteGetCall(SERVICE_URL,URI_PATH+StringUtils.capitalize(houseValue),null);
-			if(json != null && json.has("message") 
-			   && json.getString("message").equalsIgnoreCase("success") && json.has("data")){
-				response = produceResponse(json.getJSONObject("data"));
+			if(house == null || StringUtils.isEmpty(house.getValue())){
+				response = newAskResponse("which house would you like information for?", "On which house would you like have information?");
 			}else{
-				LOGGER.error("A json object null or without message element is returned.");
-				response = newTellResponse(COMMUNICATION_ERROR_MESSAGE);
+				String houseValue = house.getValue();
+				//check added to manage an Alexa strange behavior highlighted by tests.
+				//Alexa autonomously prepend a "the" to the value of the returned custom slot. 
+				if(houseValue.toLowerCase().startsWith("the ")){
+					houseValue = houseValue.substring(4).trim();
+				}
+				if(!houseValue.toLowerCase().startsWith("house")){
+					houseValue += "House ";
+				}
+				LOGGER.info("HouseInformationIntent invoked passing house: {}",house.getValue());
+				JSONObject json = performRemoteGetCall(SERVICE_URL,URI_PATH+WordUtils.capitalizeFully(houseValue),null);
+				if(json != null && json.has("message") 
+				   && json.getString("message").equalsIgnoreCase("success") && json.has("data")){
+					response = produceResponse(json.getJSONObject("data"));
+				}else{
+					LOGGER.error("A json object null or without message element is returned.");
+					response = newTellResponse(COMMUNICATION_ERROR_MESSAGE);
+				}
 			}
 		} catch (Exception e) {
 			LOGGER.error("Unable to perform intent request.", e);

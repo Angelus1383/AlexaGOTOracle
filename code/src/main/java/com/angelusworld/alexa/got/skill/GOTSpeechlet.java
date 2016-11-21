@@ -74,7 +74,16 @@ public class GOTSpeechlet implements Speechlet {
     	Intent intent = request.getIntent();
         String intentName = intent.getName();
     	try {
-			return produceIntentHandler(intentName).handleIntent(intent, session);
+    		if(!session.isNew() && session.getAttribute("PREV_INTENT") != null){
+    			intentName = session.getAttribute("PREV_INTENT").toString();
+    			LOGGER.info("Loaded session attribute PREV_INTENT={} set in the previous session step.", intentName);
+    		}
+    		SpeechletResponse sr = produceIntentHandler(intentName).handleIntent(intent, session);
+    		if(!sr.getShouldEndSession()){
+    			session.setAttribute("PREV_INTENT", intentName);
+    			LOGGER.info("Set session attribute PREV_INTENT={} to use in the next session step.", intentName);
+    		}
+			return sr;
 		} catch (GOTException e) {
 			throw new SpeechletException(e.getMessage(), e);
 		}
