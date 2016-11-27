@@ -43,10 +43,10 @@ All the business logic of the skill is in an **AWS Lambda Function** developed i
 The structure of the whole resulting Lambda Function is shown in the following schema.
 ![AlexaGOTOracleClassDiagram.png](https://github.com/Angelus1383/AlexaGOTOracle/blob/master/schemas/AlexaGOTOracleClassDiagram.png)
 
-To create an AWS Lambda Function the first step is select the AWS Lambda service from the service list and then create a new Lambda function clicking on the button. Skipped the blueprint selection the next step to configure the new Lambda Function is set the trigger type, selecting **Alexa Skill Kit**
+To create an AWS Lambda Function the first step is select the AWS Lambda service from the service list and then create a new Lambda function clicking on the button. Skipped the blueprint selection, to configure the new Lambda Function, we need to set the trigger type, selecting **Alexa Skill Kit**
 ![configure-triggers.png](https://github.com/Angelus1383/AlexaGOTOracle/blob/master/schemas/configure-triggers.png)
 
-Configured the trigger function details have to be provided. In case of a JAVA based function code has to be uploaded whilst in the other cases the code can be pasted into the text-area. In advanced configuration, into the field handler put the *fully qualified name* of the class extending the **SpeechletRequestStreamHandler**.
+Configured the trigger function, details have to be provided. In case of a JAVA based function code has to be uploaded whilst in the other cases the code can be pasted into the text-area. In advanced configuration, into the field handler put the *fully qualified name* of the class extending the **SpeechletRequestStreamHandler**.
 ![configure-lambda-functions.png](https://github.com/Angelus1383/AlexaGOTOracle/blob/master/schemas/configure-lambda-functions.png)
 
 Once function is created note down the **ARN** shown in the top right corner of the window because it will be associated to the Alexa Skill.
