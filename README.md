@@ -38,6 +38,28 @@ For each remote call to the APIs exists a fallback to manage communication probl
 
 In addition to the voice output - for some of the exposed intents - G.O.T. Oracle returns also a **card** with formatted data and multimedia contents (text+image).
 
+### Service Logic
+All the business logic of the skill is in an **AWS Lambda Function** developed in JAVA™. The architecture of the JAVA artifact is pretty simple, thanks to the interfaces provided by Amazon. Introducing some design patterns, each intent has been arranged to contain all the code necessary to accomplish its aim in respect to the principle of separation of concerns.
+The structure of the whole resulting Lambda Function is shown in the following schema.
+![AlexaGOTOracleClassDiagram.png](https://github.com/Angelus1383/AlexaGOTOracle/blob/master/schemas/AlexaGOTOracleClassDiagram.png)
+
+To create an AWS Lambda Function the first step is select the AWS Lambda service from the service list and then create a new Lambda function clicking on the button. Skipped the blueprint selection the next step to configure the new Lambda Function is set the trigger type, selecting **Alexa Skill Kit**
+![configure-triggers.png](https://github.com/Angelus1383/AlexaGOTOracle/blob/master/schemas/configure-triggers.png)
+
+Configured the trigger function details have to be provided. In case of a JAVA based function code has to be uploaded whilst in the other cases the code can be pasted into the text-area. In advanced configuration, into the field handler put the *fully qualified name* of the class extending the **SpeechletRequestStreamHandler**.
+![configure-lambda-functions.png](https://github.com/Angelus1383/AlexaGOTOracle/blob/master/schemas/configure-lambda-functions.png)
+
+Once function is created note down the **ARN** shown in the top right corner of the window because it will be associated to the Alexa Skill.
+![arn.png](https://github.com/Angelus1383/AlexaGOTOracle/blob/master/schemas/arn.png)
+
+### Alexa Skill
+Once deployed the code, it's time to configure the custom skill. From the **Amazon Developer Portal**, click on the Alexa tab and then on the Alexa Skills kit. This will lead us to a list of your current configured skills. Click on Add a New Skill button.
+![skill-configuration1.png](https://github.com/Angelus1383/AlexaGOTOracle/blob/master/schemas/skill-configuration1.png)
+The field Name can be anything but the Invocation Name has to follow the guidelines provided in the [Alexa documentation](https://developer.amazon.com/public/solutions/alexa/alexa-skills-kit/docs/choosing-the-invocation-name-for-an-alexa-skill). In our case, for example, the GoT acronym must contain single letters, each followed by a period and a space. 
+
+Finally, to associate this skill with its AWS Lambda function we have to specify the ARN of our deployed AWS function.
+![skill-configuration2.png](https://github.com/Angelus1383/AlexaGOTOracle/blob/master/schemas/skill-configuration2.png)
+
 ### Interaction Model
 Following the specification provided into the **Custom Skills** section, on the Amazon Developer Portal, we designed the Voice Interface of G.O.T. Oracle. The interaction model of the skill is made by different items:
 1. Intent schema.
@@ -47,10 +69,11 @@ Following the specification provided into the **Custom Skills** section, on the 
 These three items enable Alexa to detect the intent required by the users and provide them the right response. The interaction model has been designed, developed and then configured into the developer portal as shown in the figure below.
 ![InteractionModel.png](https://github.com/Angelus1383/AlexaGOTOracle/blob/master/schemas/InteractionModel.png)
 
-### Service Logic
-All the business logic of the skill is in an **AWS Lambda Function** developed in JAVA™. The architecture of the JAVA artifact is pretty simple, thanks to the interfaces provided by Amazon. Introducing some design patterns, each intent has been arranged to contain all the code necessary to accomplish its aim in respect to the principle of separation of concerns.
-The structure of the whole resulting Lambda Function is shown in the following schema.
-![AlexaGOTOracleClassDiagram.png](https://github.com/Angelus1383/AlexaGOTOracle/blob/master/schemas/AlexaGOTOracleClassDiagram.png)
+###Testing
+To test out the skill, we use the Service Simulator in the Test section. Providing one of the configured utterances, this tool allows to test the request and response data sent and retrieved by Alexa.
+![test-skill.png](https://github.com/Angelus1383/AlexaGOTOracle/blob/master/schemas/test-skill.png)
+Another way to make an end-to-end test is use [echosim.io](https://echosim.io/). echosim.io is a nice Web application, where you can login with your account and start testing out the skills, but it doesn't work with all browsers.
+
 
 #### Example phrases
 These are some kind of phrases useful to invoke the intents exposed by G.O.T. Oracle.
