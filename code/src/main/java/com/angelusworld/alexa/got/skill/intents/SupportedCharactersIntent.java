@@ -40,8 +40,7 @@ public class SupportedCharactersIntent extends AbstractGOTIntent{
 				while((line=br.readLine())!= null){
 					sb.append(line).append("; ");
 				}
-				response = newAskResponse("The list of supported characters is very long. To the complete list, you can see the card on the Alexa app. The most required are: Daenerys Targaryen, Tyrion Lannister and Jon Snow. ", 
-						"So, which character would you like information for?", 
+				response = newTellResponse("The list of supported characters is very long. To the complete list, you can see the card on the Alexa app. The most required are: Daenerys Targaryen, Tyrion Lannister and Jon Snow. ", 
 						"List of Supported Characters", 
 						sb.toString());
 			}

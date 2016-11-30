@@ -269,7 +269,7 @@ public abstract class AbstractGOTIntent implements GOTIntent{
      * @param cardImage the image to show into the card.
      * @return SpeechletResponse the speechlet response.
      */
-    protected SpeechletResponse newTellResponse(String stringOutput, String cardTitle, String cardImage){
+    protected SpeechletResponse newTellResponseWithImage(String stringOutput, String cardTitle, String cardImage){
     	PlainTextOutputSpeech outputSpeech = new PlainTextOutputSpeech();
         outputSpeech.setText(stringOutput);
         SpeechletResponse response;
@@ -288,6 +288,36 @@ public abstract class AbstractGOTIntent implements GOTIntent{
             img.setSmallImageUrl(cardImage);
             card.setImage(img);
             card.setText(stringOutput);
+            response = SpeechletResponse.newTellResponse(outputSpeech, card);
+    	}
+
+		return response;
+    }
+
+    /**
+     * Wrapper for creating the Tell response from the input strings with
+     * plain text output and a card with the given cardTitle.
+     * 
+     * @param stringOutput the output to be spoken.
+     * @param cardTitle the title of the card to send to the companion app.
+     * @param cardText the text to show into the card.
+     * @return SpeechletResponse the speechlet response.
+     */
+    protected SpeechletResponse newTellResponse(String stringOutput, String cardTitle, String cardText){
+    	PlainTextOutputSpeech outputSpeech = new PlainTextOutputSpeech();
+        outputSpeech.setText(stringOutput);
+        SpeechletResponse response;
+    	if(StringUtils.isEmpty(cardTitle)){
+    		response = SpeechletResponse.newTellResponse(outputSpeech);
+    	}else if(StringUtils.isEmpty(cardText)){
+    		SimpleCard card = new SimpleCard();
+    		card.setTitle(cardTitle);
+    		card.setContent(stringOutput);
+    		response = SpeechletResponse.newTellResponse(outputSpeech, card);
+    	}else{
+    		SimpleCard card = new SimpleCard();
+            card.setTitle(cardTitle);
+            card.setContent(cardText);
             response = SpeechletResponse.newTellResponse(outputSpeech, card);
     	}
 

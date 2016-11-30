@@ -116,7 +116,7 @@ public class CharacterInformationIntent extends AbstractGOTIntent {
 				sb.append(json.getString("name")).append("is dead.");
 			}
 			if(json.has("imageLink") && !json.isNull("imageLink")){
-				response = newTellResponse(sb.toString(), json.getString("name"), SERVICE_URL+json.getString("imageLink"));
+				response = newTellResponseWithImage(sb.toString(), json.getString("name"), SERVICE_URL+json.getString("imageLink"));
 			}else{
 				response = newTellResponse(sb.toString());
 			}

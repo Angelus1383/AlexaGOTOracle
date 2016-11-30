@@ -30,7 +30,6 @@ public class HelpIntent extends AbstractGOTIntent {
 	@Override
 	public SpeechletResponse handleIntent(Intent intent, Session session) throws GOTException {
 		LOGGER.info("HelpIntent invoked.");
-		String whichCharacterPrompt = "Which character would you like information for?";
 		String speechOutput =
          "I can provide you information about characters, houses or places of the Known World. "
          + "Here kind of questions you can do: "
@@ -40,10 +39,8 @@ public class HelpIntent extends AbstractGOTIntent {
          + "Which is the last known position of Daenerys Targaryen. "
          + "Get information on the episode 2 in the season 1. "
          + "What's happened in the last episode. "
-         + "Finally you can ask the list of supported characters and the list of supported houses. "
-         + "To exit you can say stop. "
-         + "So, " + whichCharacterPrompt;
- 		return newAskResponse(speechOutput, whichCharacterPrompt, "G.O.T. Oracle Help");
+         + "Finally you can ask the list of supported characters and the list of supported houses. ";
+ 		return newTellResponse(speechOutput, "G.O.T. Fan Help");
 	}
 
 }

@@ -38,19 +38,16 @@ public class WelcomeIntent extends AbstractGOTIntent{
 	@Override
 	public SpeechletResponse handleIntent(final Intent intent, final Session session) throws GOTException {
 		LOGGER.info("WelcomeIntent invoked.");
-		String whichCharacterPrompt = "Which character would you like information for?";
-		String speechOutput = "Welcome to G.O.T. Oracle. "
+		String speechOutput = "Welcome to G.O.T. Fan. "
 				   + "I can provide you information about characters and houses of Known World. "
-				   + "In addition I can give you information on episodes and better quotes of several characters. "
-				   + whichCharacterPrompt;
+				   + "In addition I can give you information on episodes and better quotes of several characters. ";
 		String repromptText =
          "I can provide you information about characters and houses of the Known World "
          + "Here kind of questions you can do: "
          + "Get information about Jon Snow. "
          + "Get information on Lannister. "
          + "Get information on the episode 2 in the season 1. "
-         + "For a list of all kind of questions that you can do to me, ask me help. "
-         + "So, " + whichCharacterPrompt;
+         + "For a list of all kind of questions that you can do to me, ask me help. ";
 
  		return newAskResponse(speechOutput, repromptText);
 	}

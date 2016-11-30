@@ -40,9 +40,7 @@ public class SupportedHousesIntent extends AbstractGOTIntent{
 				while((line=br.readLine())!= null){
 					sb.append(line).append(" \n");
 				}
-				sb.append("so, which house would you like information for?");
-				response = newAskResponse("The list of supported houses is very long. To the complete list, you can see the card on the Alexa app. The most required are: House Targaryen, house lannister, house stark.", 
-						"So, which house would you like information for?", 
+				response = newTellResponse("The list of supported houses is very long. To the complete list, you can see the card on the Alexa app. The most required are: House Targaryen, house lannister, house stark.", 
 						"List of Supported Houses", 
 						sb.toString());
 			}

@@ -107,7 +107,7 @@ public class HouseInformationIntent extends AbstractGOTIntent {
 				sb.append("The Lord of the house is known as ").append(json.getString("title")).append(". ");
 			}
 			if(json.has("imageLink") && !json.isNull("imageLink")){
-				response = newTellResponse(sb.toString(), json.getString("name"), SERVICE_URL+json.getString("imageLink"));
+				response = newTellResponseWithImage(sb.toString(), json.getString("name"), SERVICE_URL+json.getString("imageLink"));
 			}else{
 				response = newTellResponse(sb.toString());
 			}

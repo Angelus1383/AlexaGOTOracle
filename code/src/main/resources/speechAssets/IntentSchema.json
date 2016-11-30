@@ -62,9 +62,6 @@
 	      	"intent": "SupportedHousesIntent"
 	    },
 	    {
-	      	"intent": "SupportedPlacesIntent"
-	    },
-	    {
 	      	"intent": "AMAZON.HelpIntent"
 	    },
 	    {
