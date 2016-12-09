@@ -2,8 +2,6 @@ CharacterInformationIntent get information about {character}
 CharacterInformationIntent get information on {character}
 CharacterInformationIntent get info about {character}
 CharacterInformationIntent get info on {character}
-CharacterInformationIntent give me a recap about {character}
-CharacterInformationIntent give me a recap on {character}
 CharacterInformationIntent who is {character}
 CharacterInformationIntent {character}
 CharacterInformationIntent get information about characters
@@ -44,28 +42,14 @@ HouseInformationIntent get a description about houses
 HouseInformationIntent get a description of houses
 HouseInformationIntent get a description about {house}
 HouseInformationIntent get a description of {house}
-HouseInformationIntent get information about {house}
-HouseInformationIntent get information on {house}
-HouseInformationIntent get info about {house}
-HouseInformationIntent get info on {house}
-HouseInformationIntent get a recap about {house}
-HouseInformationIntent get a recap on {house}
 HouseInformationIntent give me a description about houses
 HouseInformationIntent give me a description on houses
-HouseInformationIntent give me information about {house}
-HouseInformationIntent give me information on {house}
-HouseInformationIntent give me info about {house}
-HouseInformationIntent give me info on {house}
-HouseInformationIntent give me a recap about {house}
-HouseInformationIntent give me a recap on {house}
+HouseInformationIntent give me a description about {house}
+HouseInformationIntent give me a description on {house}
 HouseInformationIntent tell me a description about houses
 HouseInformationIntent tell me a description of houses
-HouseInformationIntent tell me information about {house}
-HouseInformationIntent tell me information on {house}
-HouseInformationIntent tell me info about {house}
-HouseInformationIntent tell me info on {house}
-HouseInformationIntent tell me a recap about {house}
-HouseInformationIntent tell me a recap on {house}
+HouseInformationIntent tell me a description about {house}
+HouseInformationIntent tell me a description on {house}
 HouseInformationIntent {house}
 
 FindEpisodeIntent get information on the episode {episode} in the season {season}
